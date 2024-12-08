@@ -1,4 +1,3 @@
-
 // Función principal que ejecuta un menú interactivo para seleccionar diferentes opciones
 fun main() {
     while (true) {
