@@ -146,22 +146,22 @@ fun hanoiOption() {
 
     var paso = 1
     // Resolver el problema de las Torres de Hanoi
-    hanoi(discos, 'A', 'C', 'B') { origen, destino ->
-        println("Paso ${paso++}: Mover disco de Torre $origen a Torre $destino")
+    hanoi(discos, 'A', 'C', 'B') { origen, destino, disco ->
+        println("Paso ${paso++}: Mover disco $disco de Torre $origen a Torre $destino")
     }
 }
 
 // Función recursiva para resolver las Torres de Hanoi
-fun hanoi(n: Int, origen: Char, destino: Char, auxiliar: Char, mover: (Char, Char) -> Unit) {
+fun hanoi(n: Int, origen: Char, destino: Char, auxiliar: Char, mover: (Char, Char, Int) -> Unit) {
     if (n == 1) {
-        mover(origen, destino)
+        mover(origen, destino, 1)
         return
     }
 
     // Mover n-1 discos de origen a auxiliar
     hanoi(n - 1, origen, auxiliar, destino, mover)
     // Mover el disco restante de origen a destino
-    mover(origen, destino)
+    mover(origen, destino, n)
     // Mover n-1 discos de auxiliar a destino
     hanoi(n - 1, auxiliar, destino, origen, mover)
 }
